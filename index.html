@@ -1,0 +1,2034 @@
+<html>
+<head>
+    <script type="text/javascript" src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
+
+    <style type="text/css">
+        #mynetwork {
+            width: 100%;
+            height: 100%;
+            border: 1px solid lightgray;
+        }
+    </style>
+</head>
+<body>
+<div id="mynetwork"></div>
+
+<script type="text/javascript">
+
+
+var nodeArray = [
+  {
+    "label": "batch",
+    "id": "arn-cluster-views-trimming-process"
+  },
+  {
+    "label": "batch",
+    "id": "pinger-sync-process"
+  },
+  {
+    "label": "service",
+    "id": "dc-collector-consumer"
+  },
+  {
+    "label": "service",
+    "id": "rss-crawler-server"
+  },
+  {
+    "label": "service",
+    "id": "dcr-distribution-consumer"
+  },
+  {
+    "label": "service",
+    "id": "auth-service"
+  },
+  {
+    "label": "batch",
+    "id": "trending-company-service"
+  },
+  {
+    "label": "service",
+    "id": "user-profile-service"
+  },
+  {
+    "label": "service",
+    "id": "dc-group-processor-consumer"
+  },
+  {
+    "label": "service",
+    "id": "daycount-consumer-bootstrapper"
+  },
+  {
+    "label": "service",
+    "id": "rss-news-general-article-resolver"
+  },
+  {
+    "label": "service",
+    "id": "competitor-graph-service-server"
+  },
+  {
+    "label": "service",
+    "id": "owler-webhook-consumer"
+  },
+  {
+    "label": "batch",
+    "id": "arn-cluster-compaction-process"
+  },
+  {
+    "label": "",
+    "id": ""
+  },
+  {
+    "label": "service",
+    "id": "relevancy-graph-consumer-UCS"
+  },
+  {
+    "label": "batch",
+    "id": "iris-rss-news-general-queue-populator"
+  },
+  {
+    "label": "batch",
+    "id": "advanced-search-upd-freq"
+  },
+  {
+    "label": "service",
+    "id": "owler-datacard-server"
+  },
+  {
+    "label": "service",
+    "id": "arn-merge-consumer-bootstrapper"
+  },
+  {
+    "label": "batch",
+    "id": "obs-recycle-oneOpen-send-process"
+  },
+  {
+    "label": "service",
+    "id": "atlas-algo"
+  },
+  {
+    "label": "batch",
+    "id": "dc-collector-migration"
+  },
+  {
+    "label": "service",
+    "id": "owler-feed-service"
+  },
+  {
+    "label": "service",
+    "id": "dc-processor-consumer"
+  },
+  {
+    "label": "service",
+    "id": "rss-blog-article-resolver"
+  },
+  {
+    "label": "service",
+    "id": "owler-sec-revenue-extractor"
+  },
+  {
+    "label": "batch",
+    "id": "obs-reach-boost-send-process1"
+  },
+  {
+    "label": "service",
+    "id": "advanced-search-dbz-companycol-tailer"
+  },
+  {
+    "label": "batch",
+    "id": "owler-sec-revenue-ttm"
+  },
+  {
+    "label": "service",
+    "id": "owler-datacard-response-process"
+  },
+  {
+    "label": "service",
+    "id": "company-autotag-workers"
+  },
+  {
+    "label": "batch",
+    "id": "address-extractor"
+  },
+  {
+    "label": "batch",
+    "id": "process-seeded-employer"
+  },
+  {
+    "label": "service",
+    "id": "ia-gearman-bootstrapper"
+  },
+  {
+    "label": "service",
+    "id": "owler-sitemap-service"
+  },
+  {
+    "label": "service",
+    "id": "owler-analytics-tomcat"
+  },
+  {
+    "label": "batch",
+    "id": "datacard-company-info-full-without-followers"
+  },
+  {
+    "label": "service",
+    "id": "rss-blog-crawler-parser"
+  },
+  {
+    "label": "service",
+    "id": "owler-notification-service"
+  },
+  {
+    "label": "service",
+    "id": "cpe-content-count-worker"
+  },
+  {
+    "label": "service",
+    "id": "daycount-consumer-bootstrapper-fix"
+  },
+  {
+    "label": "service",
+    "id": "checkin-team-follow-consumer"
+  },
+  {
+    "label": "service",
+    "id": "owler-notification-service-watchlist-consumer"
+  },
+  {
+    "label": "service",
+    "id": "kickstart-email-sent-info-bootstrapper"
+  },
+  {
+    "label": "batch",
+    "id": "location-whois-validation-process"
+  },
+  {
+    "label": "service",
+    "id": "obs-email-transmitter-consumer-bootstrapper"
+  },
+  {
+    "label": "batch",
+    "id": "member-relevancy-full-indexer"
+  },
+  {
+    "label": "service",
+    "id": "owlerpro-user-consumer"
+  },
+  {
+    "label": "batch",
+    "id": "location-sync-process"
+  },
+  {
+    "label": "batch",
+    "id": "insight-migration"
+  },
+  {
+    "label": "service",
+    "id": "invoker-snapshot-scheduler"
+  },
+  {
+    "label": "service",
+    "id": "owlerpro-payment-server"
+  },
+  {
+    "label": "service",
+    "id": "partner-email-api-server"
+  },
+  {
+    "label": "service",
+    "id": "rabbitmq-arn-consumer-bootstrapper"
+  },
+  {
+    "label": "service",
+    "id": "obs-server"
+  },
+  {
+    "label": "service",
+    "id": "relevancy-graph-refresher-UCS"
+  },
+  {
+    "label": "service",
+    "id": "email-invoker-jetty"
+  },
+  {
+    "label": "service",
+    "id": "datacard-service-queue-consumer"
+  },
+  {
+    "label": "service",
+    "id": "dc-collector-server"
+  },
+//   {
+//     "label": "service",
+//     "id": "static-pages"
+//   },
+//   {
+//     "label": "service",
+//     "id": "sunset-resub-service"
+//   },
+//   {
+//     "label": "batch",
+//     "id": "datacard-company-info-full"
+//   },
+//   {
+//     "label": "service",
+//     "id": "iris-clustering-bootstrapper"
+//   },
+//   {
+//     "label": "service",
+//     "id": "ucs-oplog-kafka-consumer"
+//   },
+//   {
+//     "label": "service",
+//     "id": "cpe-content-service"
+//   },
+//   {
+//     "label": "batch",
+//     "id": "periodic-competitor-response-kafkaconsumer"
+//   },
+//   {
+//     "label": "service",
+//     "id": "spider-information-retrieval"
+//   },
+//   {
+//     "label": "service",
+//     "id": "jobcreator-event-bootstrapper"
+//   },
+//   {
+//     "label": "batch",
+//     "id": "team-name-creator-service"
+//   },
+//   {
+//     "label": "batch",
+//     "id": "kickstart-email-process"
+//   },
+//   {
+//     "label": "batch",
+//     "id": "test-iris-daily-stats-updater-process"
+//   },
+//   {
+//     "label": "service",
+//     "id": "eai-service"
+//   },
+//   {
+//     "label": "service",
+//     "id": "content-priority-engine"
+//   },
+//   {
+//     "label": "batch",
+//     "id": "full-indexer-new"
+//   },
+//   {
+//     "label": "batch",
+//     "id": "opt-in-input-file-process"
+//   },
+//   {
+//     "label": "service",
+//     "id": "kickstart-email-analytics-process-bootstrapper"
+//   },
+//   {
+//     "label": "service",
+//     "id": "dc-refresh-consumer-process"
+//   },
+//   {
+//     "label": "service",
+//     "id": "snapshot-expired-feeds-remover"
+//   },
+//   {
+//     "label": "service",
+//     "id": "elo"
+//   },
+//   {
+//     "label": "service",
+//     "id": "owler-feed-handler-server"
+//   },
+//   {
+//     "label": "batch",
+//     "id": "iris-rss-queue-populator"
+//   },
+//   {
+//     "label": "service",
+//     "id": "event-categorization-server"
+//   },
+//   {
+//     "label": "service",
+//     "id": "email-composer-bootstrapper"
+//   },
+//   {
+//     "label": "service",
+//     "id": "marketingusers-email-transmitter-bootstrapper"
+//   },
+//   {
+//     "label": "batch",
+//     "id": "member-relevancy-full-indexer-temp"
+//   },
+//   {
+//     "label": "batch",
+//     "id": "datacard-service-migration"
+//   },
+//   {
+//     "label": "service",
+//     "id": "cpe-user-service"
+//   },
+//   {
+//     "label": "service",
+//     "id": "email-transmitter-bootstrapper"
+//   },
+//   {
+//     "label": "service",
+//     "id": "owler-webhook-server"
+//   },
+//   {
+//     "label": "service",
+//     "id": "iris-manager-bootstrapper"
+//   },
+//   {
+//     "label": "service",
+//     "id": "partner-email-consumer-process"
+//   },
+//   {
+//     "label": "service",
+//     "id": "insight-jetty-server-starter"
+//   },
+//   {
+//     "label": "batch",
+//     "id": "kickstart-email-scheduler"
+//   },
+//   {
+//     "label": "batch",
+//     "id": "kickstart-email-ondemand"
+//   },
+//   {
+//     "label": "service",
+//     "id": "owler-analytics-consumer-bootstrapper"
+//   },
+//   {
+//     "label": "service",
+//     "id": "geoip-server"
+//   },
+//   {
+//     "label": "batch",
+//     "id": "datacard-company-info-full-with-followers"
+//   },
+//   {
+//     "label": "service",
+//     "id": "datacard-service-server"
+//   },
+//   {
+//     "label": "service",
+//     "id": "spider-parser-server"
+//   },
+//   {
+//     "label": "service",
+//     "id": "cps-consensus-kafka-consumer"
+//   },
+//   {
+//     "label": "service",
+//     "id": "kickstart-email-service-migration"
+//   },
+//   {
+//     "label": "service",
+//     "id": "company-profile-service-server"
+//   },
+//   {
+//     "label": "batch",
+//     "id": "dc-response-processor-migration"
+//   },
+//   {
+//     "label": "service",
+//     "id": "user-company-service-server"
+//   },
+//   {
+//     "label": "service",
+//     "id": "spider-syncer-insta"
+//   },
+//   {
+//     "label": "service",
+//     "id": "web-pages-service"
+//   },
+//   {
+//     "label": "batch",
+//     "id": "obs-daily-send-process-recycle"
+//   },
+//   {
+//     "label": "batch",
+//     "id": "spider-domain-handler"
+//   },
+//   {
+//     "label": "batch",
+//     "id": "cg-builder"
+//   },
+//   {
+//     "label": "batch",
+//     "id": "spider-existing"
+//   },
+//   {
+//     "label": "batch",
+//     "id": "populate-domains-syncer"
+//   },
+//   {
+//     "label": "batch",
+//     "id": "competitor-api-full-indexer"
+//   },
+//   {
+//     "label": "service",
+//     "id": "email-transmitter-jetty"
+//   },
+//   {
+//     "label": "service",
+//     "id": "owler-subscription"
+//   },
+//   {
+//     "label": "batch",
+//     "id": "member-relevancy-incremental-indexer"
+//   },
+//   {
+//     "label": "service",
+//     "id": "rss-article-resolver"
+//   },
+//   {
+//     "label": "service",
+//     "id": "obs-email-transmitter-bootstrapper"
+//   },
+//   {
+//     "label": "service",
+//     "id": "competitor-incremental-indexer"
+//   },
+//   {
+//     "label": "service",
+//     "id": "kickstart-content-generator-worker"
+//   },
+//   {
+//     "label": "service",
+//     "id": "iris-processor-bootstrapper"
+//   },
+//   {
+//     "label": "service",
+//     "id": "web"
+//   },
+//   {
+//     "label": "batch",
+//     "id": "company-revenue-periodic-process"
+//   },
+//   {
+//     "label": "batch",
+//     "id": "email-deliverability"
+//   },
+//   {
+//     "label": "service",
+//     "id": "rss-crawler-parser"
+//   },
+//   {
+//     "label": "service",
+//     "id": "portfolio"
+//   },
+//   {
+//     "label": "service",
+//     "id": "company-page-service-server"
+//   },
+//   {
+//     "label": "service",
+//     "id": "obs-email-transmitter"
+//   },
+//   {
+//     "label": "service",
+//     "id": "partner-email-service"
+//   },
+//   {
+//     "label": "service",
+//     "id": "owlerpro-user-server"
+//   },
+//   {
+//     "label": "batch",
+//     "id": "insight-process-invoker"
+//   },
+//   {
+//     "label": "service",
+//     "id": "legacy-service"
+//   },
+//   {
+//     "label": "batch",
+//     "id": "competitor-api-full-indexer-temp"
+//   },
+//   {
+//     "label": "service",
+//     "id": "winback-kafka-consumer-process"
+//   },
+//   {
+//     "label": "batch",
+//     "id": "owlerpro-refresh-eai-companies"
+//   },
+//   {
+//     "label": "service",
+//     "id": "transmitter-retry-process"
+//   },
+//   {
+//     "label": "service",
+//     "id": "dc-processor-server"
+//   },
+//   {
+//     "label": "service",
+//     "id": "snapshotfeed-sync-process"
+//   },
+//   {
+//     "label": "service",
+//     "id": "vyas-company-indexer"
+//   },
+//   {
+//     "label": "service",
+//     "id": "dc-consensus-consumer"
+//   },
+//   {
+//     "label": "batch",
+//     "id": "spider-syncer"
+//   },
+//   {
+//     "label": "batch",
+//     "id": "obs-daily-send-process-open-recycle"
+//   },
+//   {
+//     "label": "service",
+//     "id": "dc-full-refresh-event-consumer-process"
+//   },
+//   {
+//     "label": "batch",
+//     "id": "group-insight-process-invoker"
+//   },
+//   {
+//     "label": "service",
+//     "id": "react-web-service"
+//   },
+//   {
+//     "label": "batch",
+//     "id": "spider-pop"
+//   },
+//   {
+//     "label": "service",
+//     "id": "incremental-indexer-service"
+//   },
+//   {
+//     "label": "service",
+//     "id": "snapshot-member-relevancy-bootstrapper"
+//   },
+//   {
+//     "label": "service",
+//     "id": "test-partner-email-service"
+//   },
+//   {
+//     "label": "service",
+//     "id": "eai-service-retoken"
+//   },
+//   {
+//     "label": "service",
+//     "id": "email-verification-service"
+//   },
+//   {
+//     "label": "service",
+//     "id": "rss-news-general-crawler-parser"
+//   },
+//   {
+//     "label": "batch",
+//     "id": "obs-daily-send-process-open"
+//   },
+//   {
+//     "label": "batch",
+//     "id": "obs-migration"
+//   },
+//   {
+//     "label": "batch",
+//     "id": "location-validation-process"
+//   },
+//   {
+//     "label": "service",
+//     "id": "api-gateway-service"
+//   },
+//   {
+//     "label": "service",
+//     "id": "content-generator-jetty"
+//   },
+//   {
+//     "label": "service",
+//     "id": "insta-domains-server"
+//   },
+//   {
+//     "label": "service",
+//     "id": "vyas-service"
+//   },
+//   {
+//     "label": "service",
+//     "id": "owler-api-service"
+//   },
+//   {
+//     "label": "service",
+//     "id": "advanced-search-dbz-oplog-tailer"
+//   },
+//   {
+//     "label": "service",
+//     "id": "vyas-location-indexer"
+//   },
+//   {
+//     "label": "service",
+//     "id": "atlas"
+//   },
+//   {
+//     "label": "batch",
+//     "id": "obs-daily-send-process1"
+//   },
+//   {
+//     "label": "service",
+//     "id": "owler-pro-service"
+//   },
+//   {
+//     "label": "batch",
+//     "id": "iris-rss-blog-queue-populator"
+//   },
+//   {
+//     "label": "service",
+//     "id": "cpe-content-companyfeed-worker"
+//   },
+//   {
+//     "label": "service",
+//     "id": "obs-registration-process"
+//   },
+//   {
+//     "label": "service",
+//     "id": "ad-config-temp"
+//   },
+//   {
+//     "label": "service",
+//     "id": "spider-insta-info-retrieval"
+//   },
+//   {
+//     "label": "batch",
+//     "id": "location-validation-process-java"
+//   },
+//   {
+//     "label": "service",
+//     "id": "insight-consumers-bootstrapper"
+//   },
+//   {
+//     "label": "service",
+//     "id": "insight-migration-6632"
+//   },
+//   {
+//     "label": "service",
+//     "id": "list-pages"
+//   },
+//   {
+//     "label": "service",
+//     "id": "advanced-search-service"
+//   },
+//   {
+//     "label": "service",
+//     "id": "news-classify-server"
+//   },
+//   {
+//     "label": "service",
+//     "id": "company-revenue-service-server"
+//   },
+//   {
+//     "label": "batch",
+//     "id": "datacard-company-info-incr"
+//   },
+//   {
+//     "label": "batch",
+//     "id": "obs-recycle-send-process"
+//   },
+//   {
+//     "label": "service",
+//     "id": "prediction-service"
+//   },
+//   {
+//     "label": "service",
+//     "id": "kickstart-email-transmitter-bootstrapper"
+//   },
+//   {
+//     "label": "service",
+//     "id": "dcr-gp-processing-consumer"
+//   },
+//   {
+//     "label": "batch",
+//     "id": "owlerpro-refresh-payment"
+//   },
+//   {
+//     "label": "service",
+//     "id": "snapshotfeed-consumer-bootstrapper"
+//   },
+//   {
+//     "label": "batch",
+//     "id": "webpage-test-batch"
+//   },
+//   {
+//     "label": "service",
+//     "id": "embedded-jetty-bootstrapper"
+//   },
+//   {
+//     "label": "batch",
+//     "id": "iris-daily-stats-updater-process"
+//   },
+//   {
+//     "label": "service",
+//     "id": "cpe-user-worker"
+//   },
+//   {
+//     "label": "batch",
+//     "id": "cg-expansion"
+//   },
+//   {
+//     "label": "batch",
+//     "id": "obs-daily-send-process"
+//   },
+//   {
+//     "label": "batch",
+//     "id": "data-migration"
+//   },
+//   {
+//     "label": "service",
+//     "id": "visitor-info-service"
+//   },
+//   {
+//     "label": "service",
+//     "id": "address-extractor-insta"
+//   },
+//   {
+//     "label": "batch",
+//     "id": "owler-sec-crawler"
+//   }
+];
+    
+var nodesChanges = nodeArray.map(node => {
+        node["group"] = node.label;
+        node["label"] = node.id;
+        return node;
+    })
+// create an array with nodes
+    var nodes = new vis.DataSet(nodesChanges);
+
+
+var edges = [
+  {
+    "from": "legacy-service",
+    "to": "arn-cluster-views-trimming-process"
+  },
+  {
+    "from": "dc-processor-server",
+    "to": "arn-cluster-views-trimming-process"
+  },
+  {
+    "from": "competitor-graph-service-server",
+    "to": "arn-cluster-views-trimming-process"
+  },
+  {
+    "from": "web",
+    "to": "auth-service"
+  },
+  {
+    "from": "owler-subscription",
+    "to": "auth-service"
+  },
+  {
+    "from": "legacy-service",
+    "to": "trending-company-service"
+  },
+  {
+    "from": "legacy-service",
+    "to": "user-profile-service"
+  },
+  {
+    "from": "competitor-graph-service-server",
+    "to": "user-profile-service"
+  },
+  {
+    "from": "legacy-service",
+    "to": "dc-group-processor-consumer"
+  },
+  {
+    "from": "user-profile-service",
+    "to": "dc-group-processor-consumer"
+  },
+  {
+    "from": "dc-collector-server",
+    "to": "dc-group-processor-consumer"
+  },
+  {
+    "from": "owler-analytics-tomcat",
+    "to": "daycount-consumer-bootstrapper"
+  },
+  {
+    "from": "legacy-service",
+    "to": "daycount-consumer-bootstrapper"
+  },
+  {
+    "from": "datacard-service-server",
+    "to": "daycount-consumer-bootstrapper"
+  },
+  {
+    "from": "user-profile-service",
+    "to": "daycount-consumer-bootstrapper"
+  },
+  {
+    "from": "owler-datacard-server",
+    "to": "daycount-consumer-bootstrapper"
+  },
+  {
+    "from": "owler-webhook-server",
+    "to": "owler-webhook-consumer"
+  },
+  {
+    "from": "email-invoker",
+    "to": "owler-webhook-consumer"
+  },
+  {
+    "from": "legacy-service",
+    "to": "arn-cluster-compaction-process"
+  },
+  {
+    "from": "dc-processor-server",
+    "to": "arn-cluster-compaction-process"
+  },
+  {
+    "from": "competitor-graph-service-server",
+    "to": "arn-cluster-compaction-process"
+  },
+  {
+    "from": "user-profile-service",
+    "to": "relevancy-graph-consumer-UCS"
+  },
+  {
+    "from": "competitor-graph-service-server",
+    "to": "relevancy-graph-consumer-UCS"
+  },
+  {
+    "from": "competitor-graph-service-server",
+    "to": "owler-datacard-server"
+  },
+  {
+    "from": "dc-processor-server",
+    "to": "owler-datacard-server"
+  },
+  {
+    "from": "user-profile-service",
+    "to": "owler-datacard-server"
+  },
+  {
+    "from": "datacard-service-server",
+    "to": "owler-datacard-server"
+  },
+  {
+    "from": "insight-jetty-server-starter",
+    "to": "owler-datacard-server"
+  },
+  {
+    "from": "dc-collector-server",
+    "to": "owler-datacard-server"
+  },
+  {
+    "from": "geoip-server",
+    "to": "owler-datacard-server"
+  },
+  {
+    "from": "obs-server",
+    "to": "owler-datacard-server"
+  },
+  {
+    "from": "user-company-service-server",
+    "to": "owler-datacard-server"
+  },
+  {
+    "from": "legacy-service",
+    "to": "owler-datacard-server"
+  },
+  {
+    "from": "legacy-service",
+    "to": "arn-merge-consumer-bootstrapper"
+  },
+  {
+    "from": "dc-processor-server",
+    "to": "arn-merge-consumer-bootstrapper"
+  },
+  {
+    "from": "competitor-graph-service-server",
+    "to": "arn-merge-consumer-bootstrapper"
+  },
+  {
+    "from": "owler-analytics-tomcat",
+    "to": "obs-recycle-oneOpen-send-process"
+  },
+  {
+    "from": "email-transmitter-jetty",
+    "to": "obs-recycle-oneOpen-send-process"
+  },
+  {
+    "from": "legacy-service",
+    "to": "obs-recycle-oneOpen-send-process"
+  },
+  {
+    "from": "legacy-service",
+    "to": "owler-feed-service"
+  },
+  {
+    "from": "legacy-service",
+    "to": "dc-processor-consumer"
+  },
+  {
+    "from": "user-profile-service",
+    "to": "dc-processor-consumer"
+  },
+  {
+    "from": "dc-collector-server",
+    "to": "dc-processor-consumer"
+  },
+  {
+    "from": "owler-analytics-tomcat",
+    "to": "obs-reach-boost-send-process1"
+  },
+  {
+    "from": "email-transmitter-jetty",
+    "to": "obs-reach-boost-send-process1"
+  },
+  {
+    "from": "legacy-service",
+    "to": "obs-reach-boost-send-process1"
+  },
+  {
+    "from": "advanced-search-service",
+    "to": "advanced-search-dbz-companycol-tailer"
+  },
+  {
+    "from": "competitor-graph-service-server",
+    "to": "owler-datacard-response-process"
+  },
+  {
+    "from": "dc-processor-server",
+    "to": "owler-datacard-response-process"
+  },
+  {
+    "from": "user-profile-service",
+    "to": "owler-datacard-response-process"
+  },
+  {
+    "from": "datacard-service-server",
+    "to": "owler-datacard-response-process"
+  },
+  {
+    "from": "insight-jetty-server-starter",
+    "to": "owler-datacard-response-process"
+  },
+  {
+    "from": "dc-collector-server",
+    "to": "owler-datacard-response-process"
+  },
+  {
+    "from": "geoip-server",
+    "to": "owler-datacard-response-process"
+  },
+  {
+    "from": "obs-server",
+    "to": "owler-datacard-response-process"
+  },
+  {
+    "from": "user-company-service-server",
+    "to": "owler-datacard-response-process"
+  },
+  {
+    "from": "legacy-service",
+    "to": "owler-datacard-response-process"
+  },
+  {
+    "from": "competitor-graph-service-server",
+    "to": "process-seeded-employer"
+  },
+  {
+    "from": "dc-processor-server",
+    "to": "process-seeded-employer"
+  },
+  {
+    "from": "user-profile-service",
+    "to": "process-seeded-employer"
+  },
+  {
+    "from": "owler-datacard-server",
+    "to": "process-seeded-employer"
+  },
+  {
+    "from": "datacard-service-server",
+    "to": "process-seeded-employer"
+  },
+  {
+    "from": "insight-jetty-server-starter",
+    "to": "process-seeded-employer"
+  },
+  {
+    "from": "dc-collector-server",
+    "to": "process-seeded-employer"
+  },
+  {
+    "from": "geoip-server",
+    "to": "process-seeded-employer"
+  },
+  {
+    "from": "obs-server",
+    "to": "process-seeded-employer"
+  },
+  {
+    "from": "user-company-service-server",
+    "to": "process-seeded-employer"
+  },
+  {
+    "from": "embedded-jetty-bootstrapper",
+    "to": "process-seeded-employer"
+  },
+  {
+    "from": "api-gateway-service",
+    "to": "process-seeded-employer"
+  },
+  {
+    "from": "legacy-service",
+    "to": "process-seeded-employer"
+  },
+  {
+    "from": "content-generator-jetty",
+    "to": "process-seeded-employer"
+  },
+  {
+    "from": "email-invoker",
+    "to": "process-seeded-employer"
+  },
+  {
+    "from": "web-pages-service",
+    "to": "process-seeded-employer"
+  },
+  {
+    "from": "owler-pro-service",
+    "to": "process-seeded-employer"
+  },
+  {
+    "from": "list-pages",
+    "to": "process-seeded-employer"
+  },
+  {
+    "from": "portfolio",
+    "to": "process-seeded-employer"
+  },
+  {
+    "from": "owler-sitemap-service",
+    "to": "process-seeded-employer"
+  },
+  {
+    "from": "competitor-graph-service-server",
+    "to": "ia-gearman-bootstrapper"
+  },
+  {
+    "from": "dc-processor-server",
+    "to": "ia-gearman-bootstrapper"
+  },
+  {
+    "from": "user-profile-service",
+    "to": "ia-gearman-bootstrapper"
+  },
+  {
+    "from": "owler-datacard-server",
+    "to": "ia-gearman-bootstrapper"
+  },
+  {
+    "from": "datacard-service-server",
+    "to": "ia-gearman-bootstrapper"
+  },
+  {
+    "from": "insight-jetty-server-starter",
+    "to": "ia-gearman-bootstrapper"
+  },
+  {
+    "from": "dc-collector-server",
+    "to": "ia-gearman-bootstrapper"
+  },
+  {
+    "from": "geoip-server",
+    "to": "ia-gearman-bootstrapper"
+  },
+  {
+    "from": "obs-server",
+    "to": "ia-gearman-bootstrapper"
+  },
+  {
+    "from": "user-company-service-server",
+    "to": "ia-gearman-bootstrapper"
+  },
+  {
+    "from": "email-invoker",
+    "to": "ia-gearman-bootstrapper"
+  },
+  {
+    "from": "legacy-service",
+    "to": "owler-sitemap-service"
+  },
+  {
+    "from": "legacy-service",
+    "to": "datacard-company-info-full-without-followers"
+  },
+  {
+    "from": "competitor-graph-service-server",
+    "to": "datacard-company-info-full-without-followers"
+  },
+  {
+    "from": "dc-processor-server",
+    "to": "datacard-company-info-full-without-followers"
+  },
+  {
+    "from": "user-profile-service",
+    "to": "datacard-company-info-full-without-followers"
+  },
+  {
+    "from": "insight-jetty-server-starter",
+    "to": "owler-notification-service"
+  },
+  {
+    "from": "user-profile-service",
+    "to": "owler-notification-service"
+  },
+  {
+    "from": "user-company-service-server",
+    "to": "owler-notification-service"
+  },
+  {
+    "from": "user-profile-service",
+    "to": "cpe-content-count-worker"
+  },
+  {
+    "from": "owler-analytics-tomcat",
+    "to": "daycount-consumer-bootstrapper-fix"
+  },
+  {
+    "from": "legacy-service",
+    "to": "daycount-consumer-bootstrapper-fix"
+  },
+  {
+    "from": "datacard-service-server",
+    "to": "daycount-consumer-bootstrapper-fix"
+  },
+  {
+    "from": "user-profile-service",
+    "to": "daycount-consumer-bootstrapper-fix"
+  },
+  {
+    "from": "owler-datacard-server",
+    "to": "daycount-consumer-bootstrapper-fix"
+  },
+  {
+    "from": "user-profile-service",
+    "to": "checkin-team-follow-consumer"
+  },
+  {
+    "from": "legacy-service",
+    "to": "location-whois-validation-process"
+  },
+  {
+    "from": "legacy-service",
+    "to": "owlerpro-user-consumer"
+  },
+  {
+    "from": "user-profile-service",
+    "to": "owlerpro-user-consumer"
+  },
+  {
+    "from": "dc-collector-server",
+    "to": "owlerpro-user-consumer"
+  },
+  {
+    "from": "web",
+    "to": "owlerpro-user-consumer"
+  },
+  {
+    "from": "web-tomcat",
+    "to": "owlerpro-user-consumer"
+  },
+  {
+    "from": "owler-subscription",
+    "to": "owlerpro-user-consumer"
+  },
+  {
+    "from": "legacy-service",
+    "to": "insight-migration"
+  },
+  {
+    "from": "dc-processor-server",
+    "to": "insight-migration"
+  },
+  {
+    "from": "competitor-graph-service-server",
+    "to": "insight-migration"
+  },
+  {
+    "from": "owlerpro-user-server",
+    "to": "owlerpro-payment-server"
+  },
+  {
+    "from": "legacy-service",
+    "to": "owlerpro-payment-server"
+  },
+  {
+    "from": "owler-subscription",
+    "to": "owlerpro-payment-server"
+  },
+  {
+    "from": "user-profile-service",
+    "to": "partner-email-api-server"
+  },
+  {
+    "from": "legacy-service",
+    "to": "rabbitmq-arn-consumer-bootstrapper"
+  },
+  {
+    "from": "dc-processor-server",
+    "to": "rabbitmq-arn-consumer-bootstrapper"
+  },
+  {
+    "from": "competitor-graph-service-server",
+    "to": "rabbitmq-arn-consumer-bootstrapper"
+  },
+  {
+    "from": "owler-analytics-tomcat",
+    "to": "obs-server"
+  },
+  {
+    "from": "email-transmitter-jetty",
+    "to": "obs-server"
+  },
+  {
+    "from": "legacy-service",
+    "to": "obs-server"
+  },
+  {
+    "from": "user-profile-service",
+    "to": "relevancy-graph-refresher-UCS"
+  },
+  {
+    "from": "competitor-graph-service-server",
+    "to": "relevancy-graph-refresher-UCS"
+  },
+  {
+    "from": "legacy-service",
+    "to": "datacard-service-queue-consumer"
+  },
+  {
+    "from": "competitor-graph-service-server",
+    "to": "datacard-service-queue-consumer"
+  },
+  {
+    "from": "dc-processor-server",
+    "to": "datacard-service-queue-consumer"
+  },
+  {
+    "from": "user-profile-service",
+    "to": "datacard-service-queue-consumer"
+  },
+  {
+    "from": "api-gateway-service",
+    "to": "static-pages"
+  },
+  {
+    "from": "legacy-service",
+    "to": "static-pages"
+  },
+  {
+    "from": "web",
+    "to": "static-pages"
+  },
+  {
+    "from": "web-tomcat",
+    "to": "static-pages"
+  },
+  {
+    "from": "legacy-service",
+    "to": "datacard-company-info-full"
+  },
+  {
+    "from": "competitor-graph-service-server",
+    "to": "datacard-company-info-full"
+  },
+  {
+    "from": "dc-processor-server",
+    "to": "datacard-company-info-full"
+  },
+  {
+    "from": "user-profile-service",
+    "to": "datacard-company-info-full"
+  },
+  {
+    "from": "company-profile-service-server",
+    "to": "datacard-company-info-full"
+  },
+  {
+    "from": "user-profile-service",
+    "to": "ucs-oplog-kafka-consumer"
+  },
+  {
+    "from": "company-profile-service-server",
+    "to": "ucs-oplog-kafka-consumer"
+  },
+  {
+    "from": "user-profile-service",
+    "to": "cpe-content-service"
+  },
+  {
+    "from": "legacy-service",
+    "to": "periodic-competitor-response-kafkaconsumer"
+  },
+  {
+    "from": "user-profile-service",
+    "to": "periodic-competitor-response-kafkaconsumer"
+  },
+  {
+    "from": "dc-collector-server",
+    "to": "periodic-competitor-response-kafkaconsumer"
+  },
+  {
+    "from": "spider-parser-server",
+    "to": "spider-information-retrieval"
+  },
+  {
+    "from": "legacy-service",
+    "to": "jobcreator-event-bootstrapper"
+  },
+  {
+    "from": "user-profile-service",
+    "to": "jobcreator-event-bootstrapper"
+  },
+  {
+    "from": "owlerpro-user-server",
+    "to": "jobcreator-event-bootstrapper"
+  },
+  {
+    "from": "owler-webhook-server",
+    "to": "jobcreator-event-bootstrapper"
+  },
+  {
+    "from": "competitor-graph-service-server",
+    "to": "team-name-creator-service"
+  },
+  {
+    "from": "dc-processor-server",
+    "to": "team-name-creator-service"
+  },
+  {
+    "from": "user-profile-service",
+    "to": "team-name-creator-service"
+  },
+  {
+    "from": "owler-datacard-server",
+    "to": "team-name-creator-service"
+  },
+  {
+    "from": "datacard-service-server",
+    "to": "team-name-creator-service"
+  },
+  {
+    "from": "insight-jetty-server-starter",
+    "to": "team-name-creator-service"
+  },
+  {
+    "from": "dc-collector-server",
+    "to": "team-name-creator-service"
+  },
+  {
+    "from": "geoip-server",
+    "to": "team-name-creator-service"
+  },
+  {
+    "from": "obs-server",
+    "to": "team-name-creator-service"
+  },
+  {
+    "from": "user-company-service-server",
+    "to": "team-name-creator-service"
+  },
+  {
+    "from": "embedded-jetty-bootstrapper",
+    "to": "team-name-creator-service"
+  },
+  {
+    "from": "api-gateway-service",
+    "to": "team-name-creator-service"
+  },
+  {
+    "from": "legacy-service",
+    "to": "team-name-creator-service"
+  },
+  {
+    "from": "content-generator-jetty",
+    "to": "team-name-creator-service"
+  },
+  {
+    "from": "email-invoker",
+    "to": "team-name-creator-service"
+  },
+  {
+    "from": "web-pages-service",
+    "to": "team-name-creator-service"
+  },
+  {
+    "from": "owler-pro-service",
+    "to": "team-name-creator-service"
+  },
+  {
+    "from": "list-pages",
+    "to": "team-name-creator-service"
+  },
+  {
+    "from": "portfolio",
+    "to": "team-name-creator-service"
+  },
+  {
+    "from": "owler-sitemap-service",
+    "to": "team-name-creator-service"
+  },
+  {
+    "from": "user-profile-service",
+    "to": "kickstart-email-process"
+  },
+  {
+    "from": "legacy-service",
+    "to": "kickstart-email-process"
+  },
+  {
+    "from": "user-company-service-server",
+    "to": "kickstart-email-process"
+  },
+  {
+    "from": "dc-collector-server",
+    "to": "kickstart-email-process"
+  },
+  {
+    "from": "cpe-content-service",
+    "to": "content-priority-engine"
+  },
+  {
+    "from": "cpe-user-service",
+    "to": "content-priority-engine"
+  },
+  {
+    "from": "user-profile-service",
+    "to": "content-priority-engine"
+  },
+  {
+    "from": "competitor-graph-service-server",
+    "to": "content-priority-engine"
+  },
+  {
+    "from": "legacy-service",
+    "to": "opt-in-input-file-process"
+  },
+  {
+    "from": "datacard-service-server",
+    "to": "kickstart-email-analytics-process-bootstrapper"
+  },
+  {
+    "from": "legacy-service",
+    "to": "dc-refresh-consumer-process"
+  },
+  {
+    "from": "competitor-graph-service-server",
+    "to": "dc-refresh-consumer-process"
+  },
+  {
+    "from": "dc-processor-server",
+    "to": "dc-refresh-consumer-process"
+  },
+  {
+    "from": "user-profile-service",
+    "to": "dc-refresh-consumer-process"
+  },
+  {
+    "from": "company-profile-service-server",
+    "to": "dc-refresh-consumer-process"
+  },
+  {
+    "from": "owler-analytics-tomcat",
+    "to": "snapshot-expired-feeds-remover"
+  },
+  {
+    "from": "legacy-service",
+    "to": "snapshot-expired-feeds-remover"
+  },
+  {
+    "from": "datacard-service-server",
+    "to": "snapshot-expired-feeds-remover"
+  },
+  {
+    "from": "user-profile-service",
+    "to": "snapshot-expired-feeds-remover"
+  },
+  {
+    "from": "owler-datacard-server",
+    "to": "snapshot-expired-feeds-remover"
+  },
+  {
+    "from": "owlerpro-user-server",
+    "to": "owler-feed-handler-server"
+  },
+  {
+    "from": "content-generator-jetty",
+    "to": "email-composer-bootstrapper"
+  },
+  {
+    "from": "email-transmitter-jetty",
+    "to": "email-composer-bootstrapper"
+  },
+  {
+    "from": "email-invoker",
+    "to": "email-composer-bootstrapper"
+  },
+  {
+    "from": "user-profile-service",
+    "to": "email-composer-bootstrapper"
+  },
+  {
+    "from": "legacy-service",
+    "to": "datacard-service-migration"
+  },
+  {
+    "from": "competitor-graph-service-server",
+    "to": "datacard-service-migration"
+  },
+  {
+    "from": "dc-processor-server",
+    "to": "datacard-service-migration"
+  },
+  {
+    "from": "user-profile-service",
+    "to": "datacard-service-migration"
+  },
+  {
+    "from": "owlerpro-user-server",
+    "to": "owler-webhook-server"
+  },
+  {
+    "from": "web",
+    "to": "iris-manager-bootstrapper"
+  },
+  {
+    "from": "web-tomcat",
+    "to": "iris-manager-bootstrapper"
+  },
+  {
+    "from": "user-profile-service",
+    "to": "partner-email-consumer-process"
+  },
+  {
+    "from": "user-company-service-server",
+    "to": "partner-email-consumer-process"
+  },
+  {
+    "from": "company-profile-service-server",
+    "to": "partner-email-consumer-process"
+  },
+  {
+    "from": "legacy-service",
+    "to": "insight-jetty-server-starter"
+  },
+  {
+    "from": "dc-processor-server",
+    "to": "insight-jetty-server-starter"
+  },
+  {
+    "from": "competitor-graph-service-server",
+    "to": "insight-jetty-server-starter"
+  },
+  {
+    "from": "user-profile-service",
+    "to": "kickstart-email-scheduler"
+  },
+  {
+    "from": "legacy-service",
+    "to": "kickstart-email-scheduler"
+  },
+  {
+    "from": "user-company-service-server",
+    "to": "kickstart-email-scheduler"
+  },
+  {
+    "from": "dc-collector-server",
+    "to": "kickstart-email-scheduler"
+  },
+  {
+    "from": "user-profile-service",
+    "to": "kickstart-email-ondemand"
+  },
+  {
+    "from": "legacy-service",
+    "to": "kickstart-email-ondemand"
+  },
+  {
+    "from": "user-company-service-server",
+    "to": "kickstart-email-ondemand"
+  },
+  {
+    "from": "dc-collector-server",
+    "to": "kickstart-email-ondemand"
+  },
+  {
+    "from": "legacy-service",
+    "to": "datacard-company-info-full-with-followers"
+  },
+  {
+    "from": "competitor-graph-service-server",
+    "to": "datacard-company-info-full-with-followers"
+  },
+  {
+    "from": "dc-processor-server",
+    "to": "datacard-company-info-full-with-followers"
+  },
+  {
+    "from": "user-profile-service",
+    "to": "datacard-company-info-full-with-followers"
+  },
+  {
+    "from": "legacy-service",
+    "to": "datacard-service-server"
+  },
+  {
+    "from": "competitor-graph-service-server",
+    "to": "datacard-service-server"
+  },
+  {
+    "from": "dc-processor-server",
+    "to": "datacard-service-server"
+  },
+  {
+    "from": "user-profile-service",
+    "to": "datacard-service-server"
+  },
+  {
+    "from": "user-company-service-server",
+    "to": "datacard-service-server"
+  },
+  {
+    "from": "legacy-service",
+    "to": "cps-consensus-kafka-consumer"
+  },
+  {
+    "from": "user-profile-service",
+    "to": "kickstart-email-service-migration"
+  },
+  {
+    "from": "legacy-service",
+    "to": "kickstart-email-service-migration"
+  },
+  {
+    "from": "user-company-service-server",
+    "to": "kickstart-email-service-migration"
+  },
+  {
+    "from": "dc-collector-server",
+    "to": "kickstart-email-service-migration"
+  },
+  {
+    "from": "legacy-service",
+    "to": "company-profile-service-server"
+  },
+  {
+    "from": "insta-domains-server",
+    "to": "company-profile-service-server"
+  },
+  {
+    "from": "legacy-service",
+    "to": "dc-response-processor-migration"
+  },
+  {
+    "from": "user-profile-service",
+    "to": "dc-response-processor-migration"
+  },
+  {
+    "from": "dc-collector-server",
+    "to": "dc-response-processor-migration"
+  },
+  {
+    "from": "user-profile-service",
+    "to": "user-company-service-server"
+  },
+  {
+    "from": "competitor-graph-service-server",
+    "to": "user-company-service-server"
+  },
+  {
+    "from": "company-profile-service-server",
+    "to": "user-company-service-server"
+  },
+  {
+    "from": "legacy-service",
+    "to": "user-company-service-server"
+  },
+  {
+    "from": "api-gateway-service",
+    "to": "web-pages-service"
+  },
+  {
+    "from": "legacy-service",
+    "to": "web-pages-service"
+  },
+  {
+    "from": "web",
+    "to": "web-pages-service"
+  },
+  {
+    "from": "web-tomcat",
+    "to": "web-pages-service"
+  },
+  {
+    "from": "owler-analytics-tomcat",
+    "to": "obs-daily-send-process-recycle"
+  },
+  {
+    "from": "email-transmitter-jetty",
+    "to": "obs-daily-send-process-recycle"
+  },
+  {
+    "from": "legacy-service",
+    "to": "obs-daily-send-process-recycle"
+  },
+  {
+    "from": "competitor-graph-service-server",
+    "to": "cg-builder"
+  },
+  {
+    "from": "dc-processor-server",
+    "to": "cg-builder"
+  },
+  {
+    "from": "user-profile-service",
+    "to": "cg-builder"
+  },
+  {
+    "from": "owler-datacard-server",
+    "to": "cg-builder"
+  },
+  {
+    "from": "datacard-service-server",
+    "to": "cg-builder"
+  },
+  {
+    "from": "insight-jetty-server-starter",
+    "to": "cg-builder"
+  },
+  {
+    "from": "dc-collector-server",
+    "to": "cg-builder"
+  },
+  {
+    "from": "geoip-server",
+    "to": "cg-builder"
+  },
+  {
+    "from": "obs-server",
+    "to": "cg-builder"
+  },
+  {
+    "from": "user-company-service-server",
+    "to": "cg-builder"
+  },
+  {
+    "from": "embedded-jetty-bootstrapper",
+    "to": "cg-builder"
+  },
+  {
+    "from": "api-gateway-service",
+    "to": "cg-builder"
+  },
+  {
+    "from": "legacy-service",
+    "to": "cg-builder"
+  },
+  {
+    "from": "content-generator-jetty",
+    "to": "cg-builder"
+  },
+  {
+    "from": "email-invoker",
+    "to": "cg-builder"
+  },
+  {
+    "from": "web-pages-service",
+    "to": "cg-builder"
+  },
+  {
+    "from": "owler-pro-service",
+    "to": "cg-builder"
+  },
+  {
+    "from": "list-pages",
+    "to": "cg-builder"
+  },
+  {
+    "from": "portfolio",
+    "to": "cg-builder"
+  },
+  {
+    "from": "owler-sitemap-service",
+    "to": "cg-builder"
+  },
+  {
+    "from": "obs-email-transmitter",
+    "to": "email-transmitter-jetty"
+  },
+  {
+    "from": "owlerpro-payment-server",
+    "to": "owler-subscription"
+  },
+  {
+    "from": "owlerpro-user-server",
+    "to": "owler-subscription"
+  },
+  {
+    "from": "eai-service",
+    "to": "owler-subscription"
+  },
+  {
+    "from": "owler-subscription",
+    "to": "member-relevancy-incremental-indexer"
+  },
+  {
+    "from": "user-profile-service",
+    "to": "kickstart-content-generator-worker"
+  },
+  {
+    "from": "user-company-service-server",
+    "to": "kickstart-content-generator-worker"
+  },
+  {
+    "from": "company-profile-service-server",
+    "to": "kickstart-content-generator-worker"
+  },
+  {
+    "from": "datacard-service-server",
+    "to": "kickstart-content-generator-worker"
+  },
+  {
+    "from": "news-classify-server",
+    "to": "iris-processor-bootstrapper"
+  },
+  {
+    "from": "web",
+    "to": "iris-processor-bootstrapper"
+  },
+  {
+    "from": "web-tomcat",
+    "to": "iris-processor-bootstrapper"
+  },
+  {
+    "from": "event-categorization-server",
+    "to": "iris-processor-bootstrapper"
+  },
+  {
+    "from": "company-revenue-service-server",
+    "to": "iris-processor-bootstrapper"
+  },
+  {
+    "from": "owler-feed-handler-server",
+    "to": "iris-processor-bootstrapper"
+  },
+  {
+    "from": "competitor-graph-service-server",
+    "to": "web"
+  },
+  {
+    "from": "dc-processor-server",
+    "to": "web"
+  },
+  {
+    "from": "user-profile-service",
+    "to": "web"
+  },
+  {
+    "from": "owler-datacard-server",
+    "to": "web"
+  },
+  {
+    "from": "datacard-service-server",
+    "to": "web"
+  },
+  {
+    "from": "insight-jetty-server-starter",
+    "to": "web"
+  },
+  {
+    "from": "dc-collector-server",
+    "to": "web"
+  },
+  {
+    "from": "geoip-server",
+    "to": "web"
+  },
+  {
+    "from": "obs-server",
+    "to": "web"
+  },
+  {
+    "from": "user-company-service-server",
+    "to": "web"
+  },
+  {
+    "from": "embedded-jetty-bootstrapper",
+    "to": "web"
+  },
+  {
+    "from": "api-gateway-service",
+    "to": "web"
+  }
+];
+
+
+// var edges = links.map(e => {
+
+//     let linkObj = e;
+//     let from = linkObj["from"];
+//     var fromObj = nodes.filter(node => node.label == from); 
+//     e.from = fromObj[0].id;
+
+//     let to = linkObj.to;
+//     let toObj = nodes.filter(node => node.label == to); 
+//     linkObj.to = toObj[0].id;
+
+//     return linkObj;
+// });
+    // create an array with edges
+    // var edges = new vis.DataSet([
+    //     {from: 1, to: 3},
+    //     {from: 1, to: 2},
+    //     {from: 2, to: 4},
+    //     {from: 2, to: 5}
+    // ]);
+
+
+    
+   
+    // create a network
+    var container = document.getElementById('mynetwork');
+
+    // provide the data in the vis format
+    var data = {
+        nodes: nodes,
+        edges: edges
+    };
+    var options = {
+        nodes: {
+      shape: "dot",
+      size: 16
+    },
+    physics: {
+      forceAtlas2Based: {
+        gravitationalConstant: -26,
+        centralGravity: 0.005,
+        springLength: 230,
+        springConstant: 0.18
+      },
+      maxVelocity: 146,
+      solver: "forceAtlas2Based",
+      timestep: 0.35,
+      stabilization: { iterations: 150 }
+    }
+    };
+
+    // initialize your network!
+    var network = new vis.Network(container, data, options);
+</script>
+</body>
+</html>
